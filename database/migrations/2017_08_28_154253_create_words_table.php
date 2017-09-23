@@ -17,7 +17,7 @@ class CreateWordsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned()->index();
             $table->string('content');
-            $table->string('audio');
+            $table->string('audio')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')
