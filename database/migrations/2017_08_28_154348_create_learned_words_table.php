@@ -14,16 +14,12 @@ class CreateLearnedWordsTable extends Migration
     public function up()
     {
         Schema::create('learned_words', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('lesson_id')->unsigned()->index();
-            $table->integer('word_id')->unsigned()->index();
             $table->integer('word_answer_id')->unsigned()->index();
             $table->smallInteger('learned_time');
             $table->timestamps();
-            $table->primary(['lesson_id', 'word_id']);
 
-            $table->foreign('word_id')
-                ->references('id')->on('words')
-                ->onDelete('cascade');
             $table->foreign('word_answer_id')
                 ->references('id')->on('word_answers')
                 ->onDelete('cascade');
